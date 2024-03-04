@@ -1,0 +1,27 @@
+name: Update File
+
+on:
+  schedule:
+    # This will run every minute
+    - cron: '*/1 * * * *'
+
+jobs:
+  update-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "jzhang621@gmail.com"
+          git config --global user.name "Jimmy Zhang"
+
+      - name: Touch the file
+        run: touch docs/data/jimmy.json.js docs/data/rodger.json.js
+
+      - name: Commit and Push
+        run: |
+          git add .
+          git commit -m "Automated update" || echo "No changes to commit"
+          git push
