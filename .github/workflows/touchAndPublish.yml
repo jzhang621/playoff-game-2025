@@ -2,9 +2,9 @@ name: Touch and Publish
 
 on:
   schedule:
-    # This will run every 5 minutes
-    - cron: '*/5 * * * *'
-    # - cron: '0 9 * * *'
+    # 9am UTC
+    - cron: '0 9 * * *'
+    # - cron: '*/5 * * * *'
 
 
 jobs:
@@ -13,11 +13,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      # - name: Set up Git
-      #   run: |
-      #     git config --global user.email "jzhang621@gmail.com"
-      #     git config --global user.name "Jimmy Zhang"
 
       - name: Touch data loaders
         run: touch docs/data/jimmy.json.js docs/data/rodger.json.js
