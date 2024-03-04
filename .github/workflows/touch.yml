@@ -23,5 +23,5 @@ jobs:
       - name: Commit and Push
         run: |
           git add .
-          git commit -m --allow-empty "Automated update"
+          git commit --allow-empty -m "Automated update"
           git push
