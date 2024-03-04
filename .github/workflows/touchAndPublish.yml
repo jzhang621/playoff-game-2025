@@ -40,7 +40,7 @@ jobs:
           path: ./dist
 
   deploy:
-      needs: build
+      needs: update-file
       permissions:
         pages: write
         id-token: write
@@ -52,9 +52,3 @@ jobs:
         - name: Deploy to GitHub Pages
           id: deployment
           uses: actions/deploy-pages@v4
-
-      # - name: Commit and Push
-      #   run: |
-      #     git add .
-      #     git commit --allow-empty -m "Automated update"
-      #     git push
