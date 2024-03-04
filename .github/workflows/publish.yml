@@ -1,8 +1,13 @@
 name: Publish
 on:
-  workflow_dispatch:
-  push:
-    branches: ["main"]
+  schedule:
+    # This will run at 00:00 every day
+    - cron: '0 0 * * *'
+
+# on:
+#   workflow_dispatch:
+#   push:
+#     branches: ["main"]
 permissions:
   contents: write
 jobs:
