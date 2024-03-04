@@ -10,4 +10,5 @@ const entries = [
 
 const data = (await getPlayers(entries)).flat();
 // Write to standard out?
-console.log(data);
+// console.log(data);
+process.stdout.write(JSON.stringify(data));
