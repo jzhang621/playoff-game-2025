@@ -3,7 +3,7 @@ name: Touch and Publish
 on:
   schedule:
     # 9am UTC
-    - cron: '0 9 * * *'
+    - cron: '0 12 * * *'
     # - cron: '*/5 * * * *'
 
 
