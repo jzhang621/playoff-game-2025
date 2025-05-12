@@ -11,6 +11,7 @@ async function parsePage(url) {
         });
 
         if (!text.ok) {
+            console.log(text.headers);
             throw new Error(`HTTP error! status: ${text.status}`);
         }
         console.log(url);
@@ -49,16 +50,23 @@ function parsePlayer(row) {
     };
 }
 
-export function getPlayers(entries) {
-    return Promise.all(
-        entries.map(async (e) => {
-            const data = await parsePage(e.url);
-            return data.map((d) => ({
+// Sleep function to add delay between requests
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+export async function getPlayers(entries) {
+    const results = [];
+    for (const entry of entries) {
+        const data = await parsePage(entry.url);
+        results.push(
+            ...data.map((d) => ({
                 ...d,
-                name: e.name,
-            }));
-        })
-    );
+                name: entry.name,
+            }))
+        );
+        // Add a 2 second delay between requests
+        await sleep(2000);
+    }
+    return results;
 }
 
 
