@@ -11,35 +11,27 @@ async function parsePage(url) {
     const response = await text.text();
     const parser = load(response);
 
-    const table = parser("table.stats_table tbody");
+    const table = parser("#player_game_log_post tfoot");
     const rows = table.find("tr");
     const players = [];
+    console.log(url);
     rows.each((i, r) => players.push(parsePlayer(parser(r))));
     return players;
 }
 
 function parsePlayer(row) {
-    const cols = row.find("td");
-    if (cols.length >= 21) {
-        const points = parseInt(cols[26].children[0].data);
-        const rebs = parseInt(cols[20].children[0].data);
-        const assists = parseInt(cols[21].children[0].data);
-        const steals = parseInt(cols[22].children[0].data);
-        const blocks = parseInt(cols[23].children[0].data);
-        return {
-            points,
-            rebounds: rebs,
-            assists,
-            steals,
-            blocks,
-        };
-    }
+    const getStat = (stat) => {
+        const cell = row.find(`td[data-stat="${stat}"]`);
+        const val = cell.text();
+        return parseInt(val) || 0;
+    };
+
     return {
-        points: 0,
-        rebounds: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
+        points: getStat("pts"),
+        // rebounds: getStat("trb"),
+        // assists: getStat("ast"),
+        // steals: getStat("stl"),
+        // blocks: getStat("blk"),
     };
 }
 

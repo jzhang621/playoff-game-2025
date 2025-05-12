@@ -5,48 +5,40 @@ title: 2024 Young Player Game
 
 ```js
 import {revive} from "./components/revive.js";
-import {getTopNStats, byCategoryPlot} from "./components/charting.js";
 ```
 
 ```js
 const jimmy = await FileAttachment("data/jimmy.json").json().then(revive);
-const jimmyTopN = getTopNStats(jimmy, 50);
+// const jimmyTopN = getTopNStats(jimmy, 50);
 ```
 
 ```js
 const rodger = await FileAttachment("data/rodger.json").json().then(revive);
-const rodgerTopN = getTopNStats(rodger, 50);
+```
+
+```js
+Inputs.table([{name: "Jimmy", value: jimmyTotalPoints}, {name: "Rodger", value: rodgerTotalPoints}])
 ```
 
 ### Jimmy
 
 ```js
-Inputs.table([jimmyTopN])
+Inputs.table(jimmy)
+```
+
+```js
+const jimmyTotalPoints = jimmy.reduce((sum, player) => sum + player.points, 0);
+```
+
+```js
+const rodgerTotalPoints = rodger.reduce((sum, player) => sum + player.points, 0);
 ```
 
 ### Rodger
 
 ```js
-Inputs.table([rodgerTopN])
+Inputs.table(rodger)
 ```
 
----
-
-```js
-const cateogry = view(Inputs.radio(
-  ["points", "rebounds", "assists", "steals", "blocks"],
-  {
-    value: "points"
-  }
-))
-```
-
-```js
-byCategoryPlot(jimmy, cateogry)
-```
-
-```js
-byCategoryPlot(rodger, cateogry)
-```
 
 
