@@ -14,7 +14,6 @@ async function parsePage(url) {
             console.log(text.headers);
             throw new Error(`HTTP error! status: ${text.status}`);
         }
-        console.log(url);
 
         const response = await text.text();
         const parser = load(response);

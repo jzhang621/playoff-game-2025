@@ -13,6 +13,10 @@ const jimmy = await FileAttachment("data/jimmy.json").json().then(revive);
 ```
 
 ```js
+console.log(jimmy);
+```
+
+```js
 const rodger = await FileAttachment("data/rodger.json").json().then(revive);
 ```
 
