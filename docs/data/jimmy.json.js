@@ -12,11 +12,6 @@ const entries = [
         active: true,
     },
     {
-        name: "Chet Holmgren",
-        url: "https://www.basketball-reference.com/players/h/holmgch01/gamelog/2025",
-        active: true,
-    },
-    {
         name: "Luka Doncic",
         url: "https://www.basketball-reference.com/players/d/doncilu01/gamelog/2025",
         active: false,
