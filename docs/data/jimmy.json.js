@@ -13,7 +13,7 @@ const entries = [
     },
     {
         name: "Chet Holmgren",
-        url: "https://www.basketball-reference.com/players/h/holmgrch01/gamelog/2025",
+        url: "https://www.basketball-reference.com/players/h/holmgch01/gamelog/2025",
         active: true,
     },
     {
