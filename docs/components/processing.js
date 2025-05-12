@@ -13,6 +13,7 @@ async function parsePage(url) {
         if (!text.ok) {
             throw new Error(`HTTP error! status: ${text.status}`);
         }
+        console.log(url);
 
         const response = await text.text();
         const parser = load(response);
@@ -24,7 +25,6 @@ async function parsePage(url) {
 
         const rows = table.find("tr");
         const players = [];
-        console.log(url);
         rows.each((i, r) => players.push(parsePlayer(parser(r))));
         return players;
     } catch (error) {
